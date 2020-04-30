@@ -11,15 +11,16 @@ ENV ADDRESS /example.com/10.1.1.1
 WORKDIR /
 
 RUN apt-get update \
-  && apt-get install -y dnsmasq=2.79-1 systemd=237-3ubuntu10.39 \
+  && apt-get install -y dnsmasq=2.79-1 systemd \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
 RUN systemctl disable systemd-resolved
 
-RUN echo "nameserver 8.8.8.8" | tee /etc/resolve.conf
+#RUN systemctl stop systemd-resolved
 
-COPY dnsmasq.conf /etc/dnsmasq.conf
+# RUN echo "nameserver 8.8.8.8" | tee /etc/resolve.conf
+ADD dnsmasq.conf /etc/dnsmasq.conf
 
 COPY entrypoint.sh /entrypoint.sh
 
@@ -27,4 +28,5 @@ RUN chmod +x /entrypoint.sh
 
 EXPOSE 53
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+RUN service dnsmasq restart
+CMD ["dnsmasq", "-d"]
