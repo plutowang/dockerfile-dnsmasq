@@ -1,0 +1,9 @@
+version: "3.1"
+
+services:
+  dns:
+    build: .
+    image: poppy12138/dnsmasq
+    container_name: dnsmasq
+    ports:
+      - 53:53
