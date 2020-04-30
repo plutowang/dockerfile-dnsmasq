@@ -5,12 +5,5 @@ services:
     build: .
     image: poppy12138/dnsmasq
     container_name: dnsmasq
-    environment:
-      IP_START: "8.8.8.10"
-      IP_END: "8.8.8.100"
-      IP_MASK: "255.255.255.0"
-      LEASE: "20h"
-      GATEWAY: "192.168.1.0"
-      ADDRESS: "/example.local/10.1.1.10"
     ports:
       - 53:53
