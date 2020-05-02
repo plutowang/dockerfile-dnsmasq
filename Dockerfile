@@ -11,7 +11,7 @@ ENV ADDRESS /example.com/10.1.1.1
 WORKDIR /
 
 RUN apt-get update \
-  && apt-get install -y dnsmasq=2.79-1 systemd=237-3ubuntu10.39 \
+  && apt-get install -y dnsmasq=2.79-1 systemd=237-3ubuntu10.39 vim\
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
