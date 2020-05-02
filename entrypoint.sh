@@ -10,5 +10,3 @@ echo "dhcp-option=3,${GATEWAY}" >> /etc/dnsmasq.conf
 echo "address=${ADDRESS}" >> /etc/dnsmasq.conf
 
 # dnsmasq --no-daemon --log-queries --conf-file=/etc/dnsmasq.conf --dhcp-broadcast
-
-service dnsmasq restart

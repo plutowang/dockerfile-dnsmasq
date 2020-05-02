@@ -27,4 +27,8 @@ RUN chmod +x /entrypoint.sh
 
 EXPOSE 53
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+# ENTRYPOINT [ "./entrypoint.sh" ]
+
+RUN sh ./entrypoint.sh
+
+CMD ["dnsmasq", "-d"]
